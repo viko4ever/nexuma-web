@@ -254,7 +254,147 @@ const services = {
     }
   ]
 }
+// =========================================================
+// NEXUMA WHATSAPP AGENT V1
+// Agente flotante sin costo API.
+// Captura interés, datos del lead y abre WhatsApp con mensaje armado.
+// =========================================================
 
+// 1) EN App.jsx AGREGA ESTE COMPONENTE ANTES DE function App()
+
+function WhatsAppAgent({ lang }) {
+  const [open, setOpen] = useState(false)
+  const [service, setService] = useState('')
+  const [form, setForm] = useState({
+    name: '',
+    company: '',
+    email: '',
+    phone: '',
+    message: ''
+  })
+
+  const phoneNumber = '525515288533'
+
+  const copy = {
+    es: {
+      title: 'Agente NEXUMA',
+      intro: 'Cuéntanos qué necesita tu empresa y te conectamos con un asesor.',
+      serviceLabel: 'Servicio de interés',
+      name: 'Nombre',
+      company: 'Empresa',
+      email: 'Correo',
+      phone: 'Teléfono',
+      message: '¿Qué necesitas resolver?',
+      button: 'Enviar por WhatsApp',
+      floating: '¿Necesitas ayuda?',
+      defaultMessage: 'Hola, quiero información sobre los servicios de NEXUMA Consulting Group.',
+      services: [
+        'Salesforce Consulting',
+        'Inteligencia Artificial',
+        'Desarrollo Web',
+        'Aplicaciones Móviles',
+        'Integraciones',
+        'Automatización Empresarial',
+        'Sistema Punto de Venta',
+        'Hablar con un asesor'
+      ]
+    },
+    en: {
+      title: 'NEXUMA Agent',
+      intro: 'Tell us what your company needs and we will connect you with an advisor.',
+      serviceLabel: 'Service of interest',
+      name: 'Name',
+      company: 'Company',
+      email: 'Email',
+      phone: 'Phone',
+      message: 'What do you need to solve?',
+      button: 'Send through WhatsApp',
+      floating: 'Need help?',
+      defaultMessage: 'Hello, I would like information about NEXUMA Consulting Group services.',
+      services: [
+        'Salesforce Consulting',
+        'Artificial Intelligence',
+        'Web Development',
+        'Mobile Applications',
+        'System Integrations',
+        'Business Automation',
+        'Point of Sale System',
+        'Talk to an advisor'
+      ]
+    }
+  }
+
+  const t = copy[lang]
+
+  const updateField = (field, value) => {
+    setForm((current) => ({ ...current, [field]: value }))
+  }
+
+  const sendToWhatsApp = () => {
+    const text = `Hola NEXUMA Consulting Group.%0A%0A` +
+      `Estoy interesado en: ${service || 'Servicios de NEXUMA'}.%0A` +
+      `Nombre: ${form.name || 'No especificado'}.%0A` +
+      `Empresa: ${form.company || 'No especificada'}.%0A` +
+      `Correo: ${form.email || 'No especificado'}.%0A` +
+      `Teléfono: ${form.phone || 'No especificado'}.%0A` +
+      `Necesidad: ${form.message || t.defaultMessage}`
+
+    window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank')
+  }
+
+  return (
+    <>
+      <button className="agent-floating" type="button" onClick={() => setOpen(true)}>
+        <span>💬</span>
+        <strong>{t.floating}</strong>
+      </button>
+
+      {open && (
+        <div className="agent-overlay">
+          <div className="agent-panel">
+            <button className="agent-close" type="button" onClick={() => setOpen(false)}>×</button>
+
+            <div className="agent-header">
+              <div className="agent-avatar">N</div>
+              <div>
+                <h3>{t.title}</h3>
+                <p>{t.intro}</p>
+              </div>
+            </div>
+
+            <label>{t.serviceLabel}</label>
+            <select value={service} onChange={(e) => setService(e.target.value)}>
+              <option value="">Selecciona una opción</option>
+              {t.services.map((item) => (
+                <option value={item} key={item}>{item}</option>
+              ))}
+            </select>
+
+            <div className="agent-grid">
+              <input placeholder={t.name} value={form.name} onChange={(e) => updateField('name', e.target.value)} />
+              <input placeholder={t.company} value={form.company} onChange={(e) => updateField('company', e.target.value)} />
+            </div>
+
+            <div className="agent-grid">
+              <input placeholder={t.email} value={form.email} onChange={(e) => updateField('email', e.target.value)} />
+              <input placeholder={t.phone} value={form.phone} onChange={(e) => updateField('phone', e.target.value)} />
+            </div>
+
+            <textarea
+              placeholder={t.message}
+              value={form.message}
+              onChange={(e) => updateField('message', e.target.value)}
+            />
+
+            <button className="agent-submit" type="button" onClick={sendToWhatsApp}>
+              {t.button} →
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  )
+}
 function App() {
   const [lang, setLang] = useState('es')
   const [selectedId, setSelectedId] = useState('salesforce')
@@ -379,6 +519,14 @@ function App() {
           <a href="mailto:nexumacg@outlook.com" className="footer-button">{t.contactUs} →</a>
         </div>
       </footer>
+      <a
+  className="whatsapp-float"
+  href="https://wa.me/525515288533?text=Hola%20NEXUMA%20Consulting%20Group%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios."
+  target="_blank"
+  rel="noreferrer"
+>
+  💬
+</a>
     </main>
   )
 }
