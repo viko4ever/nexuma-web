@@ -423,3 +423,16 @@ letter-spacing: -1px;
 .whatsapp-float:hover {
   transform: translateY(-3px);
 }
+.whatsapp-float {
+  position: fixed !important;
+  right: 24px !important;
+  bottom: 24px !important;
+  z-index: 999999 !important;
+  padding: 16px 22px;
+  border-radius: 999px;
+  background: #00c853;
+  color: white !important;
+  font-weight: 900;
+  text-decoration: none;
+  box-shadow: 0 0 30px rgba(0, 200, 83, 0.5);
+}

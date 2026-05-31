@@ -527,6 +527,14 @@ function App() {
 >
   💬
 </a>
+<a
+  className="whatsapp-float"
+  href="https://wa.me/525515288533?text=Hola%20NEXUMA%20Consulting%20Group%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios."
+  target="_blank"
+  rel="noreferrer"
+>
+  WhatsApp
+</a>
     </main>
   )
 }
