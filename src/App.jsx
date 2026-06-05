@@ -1,69 +1,89 @@
 import { useState } from 'react'
 import './App.css'
-import logoBanner from './assets/logo-banner-negro.jpg'
+import logoBrand from './assets/nexuma-brand-transparent.png'
 import heroWorld from './assets/hero-world.png'
 
 const content = {
   es: {
     langLabel: 'EN',
-    heroKicker: 'Tecnología • Automatización • Transformación',
-    heroTitle1: 'Conectamos Negocios',
-    heroTitle2: 'A Través de Tecnología',
+    heroKicker: 'Salesforce • IA • Automatización • Integraciones',
+    heroTitle1: 'Construimos operación digital',
+    heroTitle2: 'para negocios que escalan',
     heroText:
-      'Transformamos empresas mediante Salesforce, inteligencia artificial, desarrollo de software, automatización e integración de plataformas para impulsar su crecimiento.',
-    quote: 'Solicitar cotización',
-    more: 'Conocer más',
-    servicesKicker: 'Nuestros servicios',
-    servicesTitle: 'Selecciona un servicio para conocer más',
+      'Diseñamos tecnología empresarial con visión de negocio: CRM, agentes IA, automatización, integraciones y plataformas web listas para operar.',
+    quote: 'Solicitar diagnóstico',
+    more: 'Explorar soluciones',
+    trust: ['Arquitectura CRM', 'Agentes IA', 'APIs', 'Automatización'],
+    servicesKicker: 'Nuestras capacidades',
+    servicesTitle: 'Tecnología que se conecta con tu operación real',
     productsTitle: 'Productos y soluciones',
+    processKicker: 'Método NEXUMA',
+    processTitle: 'De una idea operativa a una solución funcionando',
+    processText:
+      'Trabajamos con un modelo claro: entendemos el negocio, diseñamos la arquitectura, construimos, conectamos, medimos y evolucionamos.',
+    commandKicker: 'Digital Command Center',
+    commandTitle: 'Una presencia más tecnológica, clara y vendible',
+    commandText:
+      'La página ahora comunica movimiento, precisión, automatización y capacidad técnica sin perder seriedad comercial.',
     strategyKicker: 'NEXUMA Consulting Group',
-    strategyTitle: 'Tu socio estratégico en la era digital',
+    strategyTitle: 'Tu socio estratégico en transformación digital',
     strategyText:
-      'Combinamos tecnología, experiencia y visión de negocio para ayudar a las empresas a adaptarse, innovar y liderar en un mundo digital en constante evolución.',
+      'Unimos consultoría, desarrollo e inteligencia artificial para que las empresas reduzcan trabajo manual, centralicen información y tomen mejores decisiones.',
     metrics: [
       ['+5', 'Proyectos completados'],
       ['+5', 'Clientes satisfechos'],
       ['+10', 'Años de experiencia'],
-      ['2', 'Países con presencia']
+      ['24/7', 'Visión automatizada']
     ],
     footerLinks: 'Enlaces',
     home: 'Inicio',
     services: 'Servicios',
+    process: 'Método',
     contact: 'Contacto',
     contactUs: 'Contáctanos',
     follow: 'Síguenos',
-    followText: 'Mantente al día con nuestras soluciones y novedades.',
+    followText: 'Construyamos una solución tecnológica con impacto real en tu operación.',
     city: 'Ciudad de México, México'
   },
   en: {
     langLabel: 'ES',
-    heroKicker: 'Technology • Automation • Transformation',
-    heroTitle1: 'Connecting Business',
-    heroTitle2: 'Through Technology',
+    heroKicker: 'Salesforce • AI • Automation • Integrations',
+    heroTitle1: 'We build digital operations',
+    heroTitle2: 'for businesses that scale',
     heroText:
-      'We transform companies through Salesforce, artificial intelligence, software development, automation and platform integration to accelerate business growth.',
-    quote: 'Request a quote',
-    more: 'Learn more',
-    servicesKicker: 'Our services',
-    servicesTitle: 'Select a service to learn more',
+      'We design enterprise technology with business vision: CRM, AI agents, automation, integrations and web platforms ready to operate.',
+    quote: 'Request diagnosis',
+    more: 'Explore solutions',
+    trust: ['CRM Architecture', 'AI Agents', 'APIs', 'Automation'],
+    servicesKicker: 'Our capabilities',
+    servicesTitle: 'Technology connected to your real operation',
     productsTitle: 'Products and solutions',
+    processKicker: 'NEXUMA Method',
+    processTitle: 'From an operational idea to a working solution',
+    processText:
+      'We use a clear model: understand the business, design the architecture, build, connect, measure and evolve.',
+    commandKicker: 'Digital Command Center',
+    commandTitle: 'A more technological, clear and sellable presence',
+    commandText:
+      'The site now communicates motion, precision, automation and technical capability while keeping a professional commercial tone.',
     strategyKicker: 'NEXUMA Consulting Group',
-    strategyTitle: 'Your strategic partner in the digital era',
+    strategyTitle: 'Your strategic partner in digital transformation',
     strategyText:
-      'We combine technology, experience and business vision to help companies adapt, innovate and lead in a constantly evolving digital world.',
+      'We combine consulting, software development and artificial intelligence so companies can reduce manual work, centralize information and make better decisions.',
     metrics: [
-      ['+50', 'Completed projects'],
-      ['+30', 'Satisfied clients'],
+      ['+5', 'Completed projects'],
+      ['+5', 'Satisfied clients'],
       ['+10', 'Years of experience'],
-      ['5', 'Countries with presence']
+      ['24/7', 'Automated vision']
     ],
     footerLinks: 'Links',
     home: 'Home',
     services: 'Services',
+    process: 'Method',
     contact: 'Contact',
     contactUs: 'Contact us',
     follow: 'Follow us',
-    followText: 'Stay up to date with our solutions and latest updates.',
+    followText: 'Let us build a technology solution with real operational impact.',
     city: 'Mexico City, Mexico'
   }
 }
@@ -72,40 +92,40 @@ const services = {
   es: [
     {
       id: 'salesforce',
-      icon: '☁️',
+      icon: 'SF',
       title: 'Consultoría Salesforce',
       description:
-        'Impulsamos la transformación de tu empresa con soluciones Salesforce personalizadas que optimizan procesos, mejoran la experiencia del cliente y aceleran el crecimiento.',
+        'Arquitectura, configuración, automatización y evolución de Salesforce para ordenar procesos comerciales, servicio y operación.',
       products: [
         'Implementación de Salesforce',
         'Automatización con Flows',
-        'Configuración de Sales Cloud',
-        'Configuración de Service Cloud',
+        'Sales Cloud y Service Cloud',
+        'Apex, triggers y validaciones',
         'Integraciones con sistemas externos',
-        'Soporte y evolución CRM'
+        'Soporte CRM y mejora continua'
       ]
     },
     {
       id: 'integration',
-      icon: '🌐',
+      icon: 'API',
       title: 'Integración de Sistemas',
       description:
-        'Conectamos herramientas, sistemas y plataformas para centralizar información, reducir errores y mejorar la eficiencia operativa.',
+        'Conectamos plataformas para que la información fluya entre CRM, ERP, bases de datos, WhatsApp, terminales y sistemas internos.',
       products: [
         'Integraciones por API',
-        'Conexión CRM / ERP',
         'Middleware empresarial',
-        'Sincronización de bases de datos',
-        'Integración con terminal bancaria',
-        'Integración con WhatsApp Business'
+        'Sincronización de datos',
+        'Conexión CRM / ERP',
+        'Integración con WhatsApp Business',
+        'Integración con terminal bancaria'
       ]
     },
     {
       id: 'ai',
-      icon: '🧠',
+      icon: 'AI',
       title: 'Inteligencia Artificial',
       description:
-        'Diseñamos soluciones de inteligencia artificial para automatizar tareas, mejorar atención y convertir datos en decisiones.',
+        'Creamos agentes y asistentes IA para atender, documentar, analizar información y acelerar tareas repetitivas del negocio.',
       products: [
         'Agentes IA para atención',
         'Chatbots inteligentes',
@@ -117,10 +137,10 @@ const services = {
     },
     {
       id: 'automation',
-      icon: '⚙️',
+      icon: 'AUTO',
       title: 'Automatización Empresarial',
       description:
-        'Automatizamos procesos operativos y comerciales para disminuir tiempos, reducir errores y aumentar productividad.',
+        'Reducimos trabajo manual con flujos, alertas, aprobaciones, reportes y reglas que mantienen la operación en movimiento.',
       products: [
         'Automatización de procesos',
         'Flujos de aprobación',
@@ -132,10 +152,10 @@ const services = {
     },
     {
       id: 'software',
-      icon: '💻',
+      icon: 'DEV',
       title: 'Desarrollo de Software',
       description:
-        'Construimos sistemas empresariales a la medida para resolver necesidades reales de operación, administración y crecimiento.',
+        'Construimos sistemas a la medida para administrar ventas, operación, inventarios, clientes, equipos y procesos internos.',
       products: [
         'Sistemas POS',
         'Dashboards administrativos',
@@ -147,10 +167,10 @@ const services = {
     },
     {
       id: 'webmobile',
-      icon: '📱',
+      icon: 'WEB',
       title: 'Soluciones Web y Móviles',
       description:
-        'Creamos experiencias digitales modernas, rápidas y seguras para conectar negocios con clientes y usuarios.',
+        'Diseñamos experiencias digitales modernas, rápidas y responsivas para convertir presencia digital en oportunidades reales.',
       products: [
         'Sitios web corporativos',
         'Landing pages',
@@ -164,40 +184,40 @@ const services = {
   en: [
     {
       id: 'salesforce',
-      icon: '☁️',
+      icon: 'SF',
       title: 'Salesforce Consulting',
       description:
-        'We drive business transformation with custom Salesforce solutions that optimize processes, improve customer experience and accelerate growth.',
+        'Architecture, configuration, automation and Salesforce evolution to organize sales, service and operational processes.',
       products: [
         'Salesforce implementation',
         'Flow automation',
-        'Sales Cloud configuration',
-        'Service Cloud configuration',
+        'Sales Cloud and Service Cloud',
+        'Apex, triggers and validations',
         'External system integrations',
-        'CRM support and evolution'
+        'CRM support and continuous improvement'
       ]
     },
     {
       id: 'integration',
-      icon: '🌐',
+      icon: 'API',
       title: 'System Integration',
       description:
-        'We connect tools, systems and platforms to centralize information, reduce errors and improve operational efficiency.',
+        'We connect platforms so information can flow between CRM, ERP, databases, WhatsApp, payment terminals and internal systems.',
       products: [
         'API integrations',
-        'CRM / ERP connection',
         'Enterprise middleware',
-        'Database synchronization',
-        'Bank terminal integration',
-        'WhatsApp Business integration'
+        'Data synchronization',
+        'CRM / ERP connection',
+        'WhatsApp Business integration',
+        'Bank terminal integration'
       ]
     },
     {
       id: 'ai',
-      icon: '🧠',
+      icon: 'AI',
       title: 'Artificial Intelligence',
       description:
-        'We design artificial intelligence solutions to automate tasks, improve service and turn data into decisions.',
+        'We create AI agents and assistants to support service, documentation, data analysis and repetitive business tasks.',
       products: [
         'AI service agents',
         'Intelligent chatbots',
@@ -209,10 +229,10 @@ const services = {
     },
     {
       id: 'automation',
-      icon: '⚙️',
+      icon: 'AUTO',
       title: 'Business Automation',
       description:
-        'We automate operational and commercial processes to reduce time, minimize errors and increase productivity.',
+        'We reduce manual work with flows, alerts, approvals, reports and rules that keep operations moving.',
       products: [
         'Process automation',
         'Approval flows',
@@ -224,10 +244,10 @@ const services = {
     },
     {
       id: 'software',
-      icon: '💻',
+      icon: 'DEV',
       title: 'Software Development',
       description:
-        'We build custom enterprise systems to solve real operational, administrative and growth needs.',
+        'We build custom systems to manage sales, operations, inventory, customers, teams and internal processes.',
       products: [
         'POS systems',
         'Administrative dashboards',
@@ -239,10 +259,10 @@ const services = {
     },
     {
       id: 'webmobile',
-      icon: '📱',
+      icon: 'WEB',
       title: 'Web & Mobile Solutions',
       description:
-        'We create modern, fast and secure digital experiences to connect businesses with customers and users.',
+        'We design modern, fast and responsive digital experiences to turn digital presence into real opportunities.',
       products: [
         'Corporate websites',
         'Landing pages',
@@ -254,13 +274,172 @@ const services = {
     }
   ]
 }
-// =========================================================
-// NEXUMA WHATSAPP AGENT V1
-// Agente flotante sin costo API.
-// Captura interés, datos del lead y abre WhatsApp con mensaje armado.
-// =========================================================
 
-// 1) EN App.jsx AGREGA ESTE COMPONENTE ANTES DE function App()
+const processSteps = {
+  es: [
+    ['01', 'Diagnóstico', 'Mapeamos operación, dolores, sistemas actuales y oportunidades de automatización.'],
+    ['02', 'Arquitectura', 'Diseñamos objetos, flujos, integraciones, permisos y componentes técnicos.'],
+    ['03', 'Construcción', 'Desarrollamos por módulos, validamos reglas de negocio y documentamos cambios.'],
+    ['04', 'Salida y evolución', 'Acompañamos pruebas, despliegue, capacitación y mejora continua.']
+  ],
+  en: [
+    ['01', 'Diagnosis', 'We map operations, pain points, current systems and automation opportunities.'],
+    ['02', 'Architecture', 'We design objects, flows, integrations, permissions and technical components.'],
+    ['03', 'Build', 'We develop by modules, validate business rules and document changes.'],
+    ['04', 'Launch and evolve', 'We support testing, deployment, training and continuous improvement.']
+  ]
+}
+
+const commandCards = {
+  es: [
+    ['CRM', 'Salesforce ordenado, medible y escalable'],
+    ['AI', 'Agentes para atención, análisis y operación'],
+    ['API', 'Sistemas conectados sin capturas dobles'],
+    ['OPS', 'Procesos automatizados y trazables']
+  ],
+  en: [
+    ['CRM', 'Organized, measurable and scalable Salesforce'],
+    ['AI', 'Agents for service, analysis and operations'],
+    ['API', 'Connected systems without duplicate capture'],
+    ['OPS', 'Automated and traceable processes']
+  ]
+}
+
+function TechBackground() {
+  return (
+    <div className="tech-background" aria-hidden="true">
+      <div className="aurora aurora-one"></div>
+      <div className="aurora aurora-two"></div>
+      <div className="grid-layer"></div>
+      <div className="scan-line"></div>
+      <div className="particle-field">
+        {Array.from({ length: 18 }, (_, index) => (
+          <span key={index} style={{ '--i': index }}></span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+
+function ServiceIcon({ id }) {
+  const common = { fill: 'none', stroke: 'currentColor', strokeWidth: 1.7, strokeLinecap: 'round', strokeLinejoin: 'round' }
+
+  if (id === 'salesforce') {
+    return (
+      <svg viewBox="0 0 64 64" className="service-svg" aria-hidden="true">
+        <path {...common} d="M22.5 43H44a10 10 0 0 0 1.2-19.9 13.6 13.6 0 0 0-25.9-4.8A11.9 11.9 0 0 0 22.5 43Z" />
+        <path {...common} d="M25 31h9.5a5 5 0 1 1 0 10H27" />
+        <path {...common} d="M39.5 26.5h8" />
+        <path {...common} d="M43.5 22.5v8" />
+        <circle cx="43.5" cy="26.5" r="9.5" {...common} />
+      </svg>
+    )
+  }
+
+  if (id === 'integration') {
+    return (
+      <svg viewBox="0 0 64 64" className="service-svg" aria-hidden="true">
+        <circle cx="16" cy="32" r="7" {...common} />
+        <circle cx="48" cy="18" r="7" {...common} />
+        <circle cx="48" cy="46" r="7" {...common} />
+        <path {...common} d="M23 31l18-10M23 34l18 10" />
+        <path {...common} d="M14 25v-5a4 4 0 0 1 4-4h7" />
+        <path {...common} d="M14 39v5a4 4 0 0 0 4 4h7" />
+      </svg>
+    )
+  }
+
+  if (id === 'ai') {
+    return (
+      <svg viewBox="0 0 64 64" className="service-svg" aria-hidden="true">
+        <rect x="18" y="18" width="28" height="28" rx="8" {...common} />
+        <path {...common} d="M26 35c0-5 3-9 8-9 4 0 7 3 7 7 0 5-4 8-9 8-4 0-6-2-6-6Z" />
+        <path {...common} d="M24 14v-6M32 14v-6M40 14v-6M24 56v-6M32 56v-6M40 56v-6M14 24H8M14 32H8M14 40H8M56 24h-6M56 32h-6M56 40h-6" />
+        <path {...common} d="M30 30h8M28 36h12" />
+      </svg>
+    )
+  }
+
+  if (id === 'automation') {
+    return (
+      <svg viewBox="0 0 64 64" className="service-svg" aria-hidden="true">
+        <circle cx="24" cy="24" r="8" {...common} />
+        <circle cx="43" cy="42" r="7" {...common} />
+        <path {...common} d="M24 10v6M24 32v6M10 24h6M32 24h6M14.1 14.1l4.2 4.2M29.7 29.7l4.2 4.2M33.9 14.1l-4.2 4.2M18.3 29.7l-4.2 4.2" />
+        <path {...common} d="M43 31v-5a6 6 0 0 0-6-6h-3M43 49v5a6 6 0 0 1-6 6H21" />
+        <path {...common} d="M18 56l-5-5 5-5" />
+      </svg>
+    )
+  }
+
+  if (id === 'software') {
+    return (
+      <svg viewBox="0 0 64 64" className="service-svg" aria-hidden="true">
+        <rect x="10" y="14" width="44" height="36" rx="6" {...common} />
+        <path {...common} d="M10 24h44M25 34l-6 6 6 6M39 34l6 6-6 6M35 32l-6 16" />
+        <circle cx="17" cy="19" r="1.5" fill="currentColor" />
+        <circle cx="23" cy="19" r="1.5" fill="currentColor" />
+      </svg>
+    )
+  }
+
+  return (
+    <svg viewBox="0 0 64 64" className="service-svg" aria-hidden="true">
+      <rect x="8" y="16" width="34" height="25" rx="4" {...common} />
+      <rect x="45" y="22" width="11" height="25" rx="3" {...common} />
+      <path {...common} d="M18 50h17M26.5 41v9M14 23h22M48 41h5" />
+      <path {...common} d="M16 29h10M16 35h18" />
+    </svg>
+  )
+}
+
+function HeroVisual({ lang }) {
+  const labels = lang === 'es'
+    ? ['Salesforce Core', 'AI Agents', 'API Sync', 'Automation']
+    : ['Salesforce Core', 'AI Agents', 'API Sync', 'Automation']
+
+  return (
+    <div className="hero-visual" aria-label="NEXUMA technology network animation">
+      <div className="holo-stage">
+        <div className="orbit orbit-one"></div>
+        <div className="orbit orbit-two"></div>
+        <div className="orbit orbit-three"></div>
+        <div className="world-shell">
+          <img src={heroWorld} alt="NEXUMA global connections" className="hero-world" />
+          <div className="world-scan"></div>
+          <div className="world-glass"></div>
+        </div>
+
+        <div className="node node-a"><span></span></div>
+        <div className="node node-b"><span></span></div>
+        <div className="node node-c"><span></span></div>
+        <div className="node node-d"><span></span></div>
+
+        <div className="hud-card hud-card-one">
+          <small>STATUS</small>
+          <strong>ONLINE</strong>
+          <span>Latency 08ms</span>
+        </div>
+
+        <div className="hud-card hud-card-two">
+          <small>NEXUMA OS</small>
+          <strong>Digital Stack</strong>
+          <span>CRM + AI + API</span>
+        </div>
+
+        <div className="data-console">
+          {labels.map((label) => (
+            <div className="console-row" key={label}>
+              <span>{label}</span>
+              <i></i>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
 
 function WhatsAppAgent({ lang }) {
   const [open, setOpen] = useState(false)
@@ -278,15 +457,16 @@ function WhatsAppAgent({ lang }) {
   const copy = {
     es: {
       title: 'Agente NEXUMA',
-      intro: 'Cuéntanos qué necesita tu empresa y te conectamos con un asesor.',
+      intro: 'Cuéntanos qué necesita tu empresa y abrimos la conversación por WhatsApp.',
       serviceLabel: 'Servicio de interés',
+      placeholder: 'Selecciona una opción',
       name: 'Nombre',
       company: 'Empresa',
       email: 'Correo',
       phone: 'Teléfono',
       message: '¿Qué necesitas resolver?',
       button: 'Enviar por WhatsApp',
-      floating: '¿Necesitas ayuda?',
+      floating: 'Hablar con NEXUMA',
       defaultMessage: 'Hola, quiero información sobre los servicios de NEXUMA Consulting Group.',
       services: [
         'Salesforce Consulting',
@@ -301,15 +481,16 @@ function WhatsAppAgent({ lang }) {
     },
     en: {
       title: 'NEXUMA Agent',
-      intro: 'Tell us what your company needs and we will connect you with an advisor.',
+      intro: 'Tell us what your company needs and we will start the conversation on WhatsApp.',
       serviceLabel: 'Service of interest',
+      placeholder: 'Select an option',
       name: 'Name',
       company: 'Company',
       email: 'Email',
       phone: 'Phone',
       message: 'What do you need to solve?',
       button: 'Send through WhatsApp',
-      floating: 'Need help?',
+      floating: 'Talk to NEXUMA',
       defaultMessage: 'Hello, I would like information about NEXUMA Consulting Group services.',
       services: [
         'Salesforce Consulting',
@@ -331,28 +512,31 @@ function WhatsAppAgent({ lang }) {
   }
 
   const sendToWhatsApp = () => {
-    const text = `Hola NEXUMA Consulting Group.%0A%0A` +
-      `Estoy interesado en: ${service || 'Servicios de NEXUMA'}.%0A` +
-      `Nombre: ${form.name || 'No especificado'}.%0A` +
-      `Empresa: ${form.company || 'No especificada'}.%0A` +
-      `Correo: ${form.email || 'No especificado'}.%0A` +
-      `Teléfono: ${form.phone || 'No especificado'}.%0A` +
+    const text = [
+      'Hola NEXUMA Consulting Group.',
+      '',
+      `Estoy interesado en: ${service || 'Servicios de NEXUMA'}.`,
+      `Nombre: ${form.name || 'No especificado'}.`,
+      `Empresa: ${form.company || 'No especificada'}.`,
+      `Correo: ${form.email || 'No especificado'}.`,
+      `Teléfono: ${form.phone || 'No especificado'}.`,
       `Necesidad: ${form.message || t.defaultMessage}`
+    ].join('\n')
 
-    window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank')
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`, '_blank')
   }
 
   return (
     <>
       <button className="agent-floating" type="button" onClick={() => setOpen(true)}>
-        <span>💬</span>
+        <span className="agent-pulse">N</span>
         <strong>{t.floating}</strong>
       </button>
 
       {open && (
         <div className="agent-overlay">
           <div className="agent-panel">
-            <button className="agent-close" type="button" onClick={() => setOpen(false)}>×</button>
+            <button className="agent-close" type="button" onClick={() => setOpen(false)} aria-label="Cerrar">×</button>
 
             <div className="agent-header">
               <div className="agent-avatar">N</div>
@@ -363,27 +547,27 @@ function WhatsAppAgent({ lang }) {
             </div>
 
             <label>{t.serviceLabel}</label>
-            <select value={service} onChange={(e) => setService(e.target.value)}>
-              <option value="">Selecciona una opción</option>
+            <select value={service} onChange={(event) => setService(event.target.value)}>
+              <option value="">{t.placeholder}</option>
               {t.services.map((item) => (
                 <option value={item} key={item}>{item}</option>
               ))}
             </select>
 
             <div className="agent-grid">
-              <input placeholder={t.name} value={form.name} onChange={(e) => updateField('name', e.target.value)} />
-              <input placeholder={t.company} value={form.company} onChange={(e) => updateField('company', e.target.value)} />
+              <input placeholder={t.name} value={form.name} onChange={(event) => updateField('name', event.target.value)} />
+              <input placeholder={t.company} value={form.company} onChange={(event) => updateField('company', event.target.value)} />
             </div>
 
             <div className="agent-grid">
-              <input placeholder={t.email} value={form.email} onChange={(e) => updateField('email', e.target.value)} />
-              <input placeholder={t.phone} value={form.phone} onChange={(e) => updateField('phone', e.target.value)} />
+              <input placeholder={t.email} value={form.email} onChange={(event) => updateField('email', event.target.value)} />
+              <input placeholder={t.phone} value={form.phone} onChange={(event) => updateField('phone', event.target.value)} />
             </div>
 
             <textarea
               placeholder={t.message}
               value={form.message}
-              onChange={(e) => updateField('message', e.target.value)}
+              onChange={(event) => updateField('message', event.target.value)}
             />
 
             <button className="agent-submit" type="button" onClick={sendToWhatsApp}>
@@ -395,6 +579,7 @@ function WhatsAppAgent({ lang }) {
     </>
   )
 }
+
 function App() {
   const [lang, setLang] = useState('es')
   const [selectedId, setSelectedId] = useState('salesforce')
@@ -409,11 +594,20 @@ function App() {
 
   return (
     <main className="site" id="top">
+      <TechBackground />
+
       <header className="top-header">
+        <a href="#top" aria-label="NEXUMA Consulting Group inicio" className="brand-link">
+          <img src={logoBrand} alt="NEXUMA Consulting Group" className="brand-logo" />
+        </a>
+        <nav className="main-nav" aria-label="Navegación principal">
+          <a href="#services">{t.services}</a>
+          <a href="#method">{t.process}</a>
+          <a href="#contact">{t.contact}</a>
+        </nav>
         <button className="language-toggle" onClick={toggleLanguage} type="button">
           {t.langLabel}
         </button>
-        <img src={logoBanner} alt="NEXUMA Consulting Group" className="top-logo" />
       </header>
 
       <section className="hero-section">
@@ -425,15 +619,20 @@ function App() {
           </h1>
           <div className="blue-line"></div>
           <p className="hero-text">{t.heroText}</p>
+
           <div className="hero-actions">
             <a href="#contact" className="btn btn-primary">{t.quote} <span>→</span></a>
             <a href="#services" className="btn btn-outline">{t.more} <span>→</span></a>
           </div>
+
+          <div className="trust-strip" aria-label="NEXUMA capabilities">
+            {t.trust.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
         </div>
 
-        <div className="hero-visual">
-          <img src={heroWorld} alt="NEXUMA global connections" />
-        </div>
+        <HeroVisual lang={lang} />
       </section>
 
       <section id="services" className="services-section">
@@ -449,7 +648,7 @@ function App() {
               onClick={() => setSelectedId(service.id)}
               type="button"
             >
-              <span className="tab-icon">{service.icon}</span>
+              <span className="tab-icon"><ServiceIcon id={service.id} /></span>
               <span>{service.title}</span>
             </button>
           ))}
@@ -457,10 +656,11 @@ function App() {
 
         <div className="service-detail">
           <div className="service-badge">
-            <div className="service-orb">{selectedService.icon}</div>
+            <div className="service-orb"><ServiceIcon id={selectedService.id} /></div>
           </div>
 
           <div className="service-description">
+            <p className="mini-label">ACTIVE MODULE</p>
             <h3>{selectedService.title}</h3>
             <p>{selectedService.description}</p>
           </div>
@@ -473,6 +673,43 @@ function App() {
               ))}
             </ul>
           </div>
+        </div>
+      </section>
+
+      <section className="command-section">
+        <div className="command-copy">
+          <p className="section-kicker">{t.commandKicker}</p>
+          <h2>{t.commandTitle}</h2>
+          <div className="blue-line"></div>
+          <p>{t.commandText}</p>
+        </div>
+
+        <div className="command-grid">
+          {commandCards[lang].map(([code, text]) => (
+            <article key={code}>
+              <span>{code}</span>
+              <p>{text}</p>
+              <i></i>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="method" className="process-section">
+        <div className="process-intro">
+          <p className="section-kicker">{t.processKicker}</p>
+          <h2>{t.processTitle}</h2>
+          <p>{t.processText}</p>
+        </div>
+
+        <div className="process-timeline">
+          {processSteps[lang].map(([number, title, text]) => (
+            <article key={number}>
+              <strong>{number}</strong>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -496,13 +733,14 @@ function App() {
 
       <footer id="contact" className="footer">
         <div>
-          <img src={logoBanner} alt="NEXUMA Consulting Group" className="footer-logo" />
+          <img src={logoBrand} alt="NEXUMA Consulting Group" className="footer-logo" />
         </div>
 
         <div>
           <h4>{t.footerLinks}</h4>
           <a href="#top">{t.home}</a>
           <a href="#services">{t.services}</a>
+          <a href="#method">{t.process}</a>
           <a href="#contact">{t.contact}</a>
         </div>
 
@@ -519,31 +757,8 @@ function App() {
           <a href="mailto:nexumacg@outlook.com" className="footer-button">{t.contactUs} →</a>
         </div>
       </footer>
-      <a
-  className="whatsapp-float"
-  href="https://wa.me/525515288533?text=Hola%20NEXUMA%20Consulting%20Group%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios."
-  target="_blank"
-  rel="noreferrer"
->
-  💬
-</a>
-<a
-  className="whatsapp-float"
-  href="https://wa.me/525515288533?text=Hola%20NEXUMA%20Consulting%20Group%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios."
-  target="_blank"
-  rel="noreferrer"
-  aria-label="Contactar por WhatsApp"
->
-  <svg
-    className="whatsapp-icon"
-    viewBox="0 0 32 32"
-    aria-hidden="true"
-  >
-    <path
-      d="M16.02 3.2C9.1 3.2 3.48 8.82 3.48 15.74c0 2.3.62 4.46 1.72 6.32L3.2 28.8l6.92-1.92a12.46 12.46 0 0 0 5.9 1.5c6.92 0 12.54-5.62 12.54-12.54S22.94 3.2 16.02 3.2Zm0 22.98c-1.86 0-3.58-.5-5.08-1.38l-.36-.22-4.1 1.14 1.16-3.98-.24-.38a10.23 10.23 0 0 1-1.62-5.52c0-5.66 4.6-10.26 10.24-10.26 5.66 0 10.26 4.6 10.26 10.26 0 5.64-4.6 10.24-10.26 10.24Zm5.76-7.68c-.32-.16-1.88-.92-2.18-1.02-.3-.12-.52-.16-.74.16-.22.32-.84 1.02-1.04 1.24-.18.22-.38.24-.7.08-.32-.16-1.34-.5-2.56-1.58-.94-.84-1.58-1.88-1.76-2.2-.18-.32-.02-.5.14-.66.14-.14.32-.38.48-.56.16-.18.22-.32.32-.54.1-.22.06-.4-.02-.56-.08-.16-.74-1.78-1.02-2.44-.26-.64-.54-.56-.74-.56h-.64c-.22 0-.56.08-.86.4-.3.32-1.14 1.12-1.14 2.72s1.16 3.14 1.32 3.36c.16.22 2.28 3.48 5.52 4.88.78.34 1.38.54 1.86.68.78.24 1.48.2 2.04.12.62-.1 1.88-.76 2.14-1.5.26-.74.26-1.38.18-1.5-.08-.14-.28-.22-.6-.38Z"
-    />
-  </svg>
-</a>
+
+      <WhatsAppAgent lang={lang} />
     </main>
   )
 }
