@@ -747,14 +747,14 @@ function App() {
         <div>
           <h4>{t.contactUs}</h4>
           <p>{t.city}</p>
-          <p>nexumacg@outlook.com</p>
+          <p>contacto@nexumaconsulting.com</p>
           <p>+52 55 1528 8533</p>
         </div>
 
         <div>
           <h4>{t.follow}</h4>
           <p>{t.followText}</p>
-          <a href="mailto:nexumacg@outlook.com" className="footer-button">{t.contactUs} →</a>
+          <a href="mailto:contacto@nexumaconsulting.com" className="footer-button">{t.contactUs} →</a>
         </div>
       </footer>
 
