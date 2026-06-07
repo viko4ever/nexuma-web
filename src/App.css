@@ -2008,3 +2008,39 @@ h1 span {
     gap: 9px;
   }
 }
+
+/* NEXUMA v8: separación visual del core para evitar encimados en hero */
+@media (min-width: 1121px) {
+  .nexuma-core-visual {
+    min-height: 650px;
+  }
+
+  .core-stage {
+    padding-bottom: 32px;
+  }
+
+  .core-center {
+    transform: translateY(-18px);
+  }
+
+  .core-module-1 { top: 4%; left: 5%; }
+  .core-module-2 { top: 5%; right: 3%; }
+  .core-module-3 { top: 34%; left: -1%; }
+  .core-module-4 { top: 35%; right: -2%; }
+  .core-module-5 { top: 57%; left: 8%; bottom: auto; }
+  .core-module-6 { top: 57%; right: 7%; bottom: auto; }
+
+  .core-console {
+    bottom: -4px;
+    width: min(410px, 72vw);
+  }
+}
+
+@media (max-width: 1120px) and (min-width: 721px) {
+  .core-module-5 { top: 56%; bottom: auto; left: 6%; }
+  .core-module-6 { top: 56%; bottom: auto; right: 6%; }
+
+  .core-console {
+    bottom: 1%;
+  }
+}
