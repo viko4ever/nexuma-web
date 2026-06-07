@@ -16,6 +16,11 @@ const content = {
     servicesKicker: 'Nuestras capacidades',
     servicesTitle: 'Tecnología que se conecta con tu operación real',
     productsTitle: 'Productos y soluciones',
+    talentKicker: 'NEXUMA Tech Talent',
+    talentTitle: 'Talento tecnológico especializado para acelerar proyectos',
+    talentText: 'Conectamos capacidad técnica con necesidades reales de negocio: perfiles Salesforce, desarrollo, QA, automatización, IA y gestión ágil para fortalecer equipos y ejecutar iniciativas digitales con control.',
+    talentCta: 'Solicitar talento especializado',
+    talentNote: 'Modalidad definida por alcance, perfil, duración y naturaleza del servicio.',
     processKicker: 'Método NEXUMA',
     processTitle: 'De una idea operativa a una solución funcionando',
     processText:
@@ -38,6 +43,7 @@ const content = {
     home: 'Inicio',
     services: 'Servicios',
     process: 'Método',
+    talent: 'Talento',
     contact: 'Contacto',
     contactUs: 'Contáctanos',
     follow: 'Síguenos',
@@ -57,6 +63,11 @@ const content = {
     servicesKicker: 'Our capabilities',
     servicesTitle: 'Technology connected to your real operation',
     productsTitle: 'Products and solutions',
+    talentKicker: 'NEXUMA Tech Talent',
+    talentTitle: 'Specialized technology talent to accelerate projects',
+    talentText: 'We connect technical capacity with real business needs: Salesforce, development, QA, automation, AI and agile profiles to strengthen teams and execute digital initiatives with control.',
+    talentCta: 'Request specialized talent',
+    talentNote: 'Engagement model is defined by scope, profile, duration and service nature.',
     processKicker: 'NEXUMA Method',
     processTitle: 'From an operational idea to a working solution',
     processText:
@@ -79,6 +90,7 @@ const content = {
     home: 'Home',
     services: 'Services',
     process: 'Method',
+    talent: 'Talent',
     contact: 'Contact',
     contactUs: 'Contact us',
     follow: 'Follow us',
@@ -178,6 +190,21 @@ const services = {
         'Portales de clientes',
         'E-commerce'
       ]
+    },
+    {
+      id: 'talent',
+      icon: 'TAL',
+      title: 'Talento Tecnológico Especializado',
+      description:
+        'Integramos perfiles tecnológicos especializados para acelerar proyectos Salesforce, IA, automatización, integraciones y desarrollo empresarial.',
+      products: [
+        'Staff augmentation tecnológico',
+        'Perfiles Salesforce especializados',
+        'Squads de desarrollo',
+        'QA y testing funcional',
+        'Product Owner / Scrum Master',
+        'Bolsa de horas especializada'
+      ]
     }
   ],
   en: [
@@ -270,6 +297,21 @@ const services = {
         'Customer portals',
         'E-commerce'
       ]
+    },
+    {
+      id: 'talent',
+      icon: 'TAL',
+      title: 'Specialized Tech Talent',
+      description:
+        'We integrate specialized technology profiles to accelerate Salesforce, AI, automation, integrations and enterprise software projects.',
+      products: [
+        'Technology staff augmentation',
+        'Specialized Salesforce profiles',
+        'Development squads',
+        'QA and functional testing',
+        'Product Owner / Scrum Master',
+        'Specialized hour packages'
+      ]
     }
   ]
 }
@@ -352,6 +394,21 @@ const commandCards = {
   ]
 }
 
+const talentProfiles = {
+  es: [
+    ['Salesforce', 'Developers, Admins, Consultants y Architects para iniciativas CRM.'],
+    ['Delivery Squads', 'Células con desarrollo, QA, integración y soporte técnico.'],
+    ['Agile & Product', 'Product Owner, Scrum Master y Business Analyst para ordenar ejecución.'],
+    ['QA & Testing', 'Pruebas funcionales, regresión, UAT, documentación y control de calidad.']
+  ],
+  en: [
+    ['Salesforce', 'Developers, Admins, Consultants and Architects for CRM initiatives.'],
+    ['Delivery Squads', 'Cells with development, QA, integration and technical support.'],
+    ['Agile & Product', 'Product Owner, Scrum Master and Business Analyst to structure execution.'],
+    ['QA & Testing', 'Functional, regression, UAT, documentation and quality control testing.']
+  ]
+}
+
 function TechBackground() {
   return (
     <div className="tech-background" aria-hidden="true">
@@ -427,6 +484,19 @@ function ServiceIcon({ id }) {
         <path {...common} d="M10 24h44M25 34l-6 6 6 6M39 34l6 6-6 6M35 32l-6 16" />
         <circle cx="17" cy="19" r="1.5" fill="currentColor" />
         <circle cx="23" cy="19" r="1.5" fill="currentColor" />
+      </svg>
+    )
+  }
+
+  if (id === 'talent') {
+    return (
+      <svg viewBox="0 0 64 64" className="service-svg" aria-hidden="true">
+        <circle cx="24" cy="24" r="9" {...common} />
+        <path {...common} d="M10 50c2.8-9 9-14 14-14s11.2 5 14 14" />
+        <circle cx="46" cy="18" r="6" {...common} />
+        <circle cx="48" cy="44" r="6" {...common} />
+        <path {...common} d="M34 25l7-4M37 38l6 4" />
+        <path {...common} d="M46 24v14" />
       </svg>
     )
   }
@@ -587,6 +657,7 @@ function WhatsAppAgent({ lang }) {
         'Integraciones',
         'Automatización Empresarial',
         'Sistema Punto de Venta',
+        'Talento Tecnológico Especializado',
         'Hablar con un asesor'
       ]
     },
@@ -611,6 +682,7 @@ function WhatsAppAgent({ lang }) {
         'System Integrations',
         'Business Automation',
         'Point of Sale System',
+        'Specialized Tech Talent',
         'Talk to an advisor'
       ]
     }
@@ -734,6 +806,7 @@ function App() {
         <nav className="main-nav" aria-label="Navegación principal">
           <a href="#services">{t.services}</a>
           <a href="#method">{t.process}</a>
+          <a href="#talent">{t.talent}</a>
           <a href="#contact">{t.contact}</a>
         </nav>
         <button className="language-toggle" onClick={toggleLanguage} type="button">
@@ -834,8 +907,12 @@ function App() {
         </div>
 
         <div className="process-timeline">
-          {processSteps[lang].map((step) => (
-            <article key={step.number} className="process-card">
+          {processSteps[lang].map((step, index) => (
+            <article
+              key={step.number}
+              className="process-card reveal-scroll"
+              style={{ transitionDelay: `${index * 120}ms` }}
+            >
               <div className="process-badge-wrap">
                 <strong>{step.number}</strong>
               </div>
@@ -870,6 +947,28 @@ function App() {
         </div>
       </section>
 
+      <section id="talent" className="talent-section reveal-scroll">
+        <div className="talent-copy">
+          <p className="section-kicker">{t.talentKicker}</p>
+          <h2>{t.talentTitle}</h2>
+          <div className="blue-line"></div>
+          <p>{t.talentText}</p>
+          <a className="talent-cta" href="#contact">{t.talentCta} →</a>
+          <small>{t.talentNote}</small>
+        </div>
+
+        <div className="talent-grid">
+          {talentProfiles[lang].map(([title, text], index) => (
+            <article key={title} className="talent-card reveal-scroll" style={{ transitionDelay: `${index * 110}ms` }}>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <h3>{title}</h3>
+              <p>{text}</p>
+              <i></i>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="strategy-section reveal-scroll">
         <div>
           <p className="section-kicker">{t.strategyKicker}</p>
@@ -898,6 +997,7 @@ function App() {
           <a href="#top">{t.home}</a>
           <a href="#services">{t.services}</a>
           <a href="#method">{t.process}</a>
+          <a href="#talent">{t.talent}</a>
           <a href="#contact">{t.contact}</a>
         </div>
 

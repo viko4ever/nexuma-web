@@ -495,6 +495,7 @@ h1 span {
 .services-section,
 .command-section,
 .process-section,
+.talent-section,
 .strategy-section,
 .footer {
   position: relative;
@@ -511,6 +512,7 @@ h1 span {
 .services-section h2,
 .command-section h2,
 .process-section h2,
+.talent-section h2,
 .strategy-section h2 {
   font-size: clamp(30px, 4vw, 48px);
   line-height: 1.05;
@@ -525,7 +527,7 @@ h1 span {
 
 .service-tabs {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(142px, 1fr));
   gap: 14px;
   margin-bottom: 22px;
 }
@@ -745,8 +747,9 @@ h1 span {
   left: 39px;
   top: 34px;
   bottom: 34px;
-  width: 1px;
-  background: linear-gradient(180deg, transparent, rgba(0, 213, 255, 0.7), transparent);
+  width: 2px;
+  background: linear-gradient(180deg, transparent, rgba(101, 244, 255, 0.9), rgba(10, 132, 255, 0.9), transparent);
+  box-shadow: 0 0 16px rgba(0, 213, 255, 0.42);
 }
 
 .process-card {
@@ -758,10 +761,69 @@ h1 span {
   border: 1px solid rgba(74, 180, 255, 0.22);
   border-radius: 26px;
   background:
-    linear-gradient(135deg, rgba(10, 132, 255, 0.07), transparent 40%),
+    linear-gradient(135deg, rgba(10, 132, 255, 0.08), transparent 40%),
     rgba(4, 15, 34, 0.68);
   backdrop-filter: blur(14px);
-  box-shadow: inset 0 0 24px rgba(10, 132, 255, 0.05);
+  box-shadow: inset 0 0 24px rgba(10, 132, 255, 0.05), 0 10px 34px rgba(0, 0, 0, 0.18);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease, background 0.28s ease;
+}
+
+.process-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 0%, rgba(0, 213, 255, 0.1) 45%, transparent 68%);
+  transform: translateX(-120%);
+  transition: transform 0.55s ease;
+  pointer-events: none;
+}
+
+.process-card::after {
+  content: '';
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 213, 255, 0.16), transparent 68%);
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.process-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 213, 255, 0.52);
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.32), 0 0 24px rgba(0, 213, 255, 0.14), inset 0 0 28px rgba(0, 213, 255, 0.06);
+  background:
+    linear-gradient(135deg, rgba(10, 132, 255, 0.12), transparent 42%),
+    rgba(4, 15, 34, 0.78);
+}
+
+.process-card:hover::before {
+  transform: translateX(120%);
+}
+
+.process-card.reveal-scroll {
+  opacity: 0;
+  transform: translateX(36px) translateY(18px);
+  filter: blur(8px);
+}
+
+.process-card.reveal-scroll.is-visible {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+  filter: blur(0);
+}
+
+.process-card.is-visible {
+  animation: processGlowIn 0.85s ease both;
+}
+
+.process-card.is-visible .process-mini-visual span {
+  animation-duration: 2.7s;
 }
 
 .process-badge-wrap {
@@ -769,6 +831,17 @@ h1 span {
   justify-content: center;
   position: relative;
   z-index: 1;
+}
+
+.process-badge-wrap::after {
+  content: '';
+  position: absolute;
+  top: 64px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #65f4ff;
+  box-shadow: 0 0 18px rgba(101, 244, 255, 0.7);
 }
 
 .process-timeline strong {
@@ -780,6 +853,12 @@ h1 span {
   color: #05101f;
   background: linear-gradient(135deg, #ffffff, #65f4ff, #0a84ff);
   box-shadow: 0 0 26px rgba(0, 213, 255, 0.34);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.process-card:hover strong {
+  transform: scale(1.06);
+  box-shadow: 0 0 30px rgba(0, 213, 255, 0.52);
 }
 
 .process-card-main {
@@ -804,6 +883,13 @@ h1 span {
   background: linear-gradient(180deg, rgba(10, 132, 255, 0.14), rgba(0, 213, 255, 0.06));
   border: 1px solid rgba(74, 180, 255, 0.18);
   box-shadow: inset 0 0 18px rgba(0, 213, 255, 0.08);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.process-card:hover .process-icon-shell {
+  transform: translateY(-2px) scale(1.04);
+  border-color: rgba(101, 244, 255, 0.38);
+  box-shadow: inset 0 0 22px rgba(0, 213, 255, 0.14), 0 0 20px rgba(0, 213, 255, 0.12);
 }
 
 .process-svg {
@@ -865,6 +951,30 @@ h1 span {
   align-content: center;
   gap: 12px;
   overflow: hidden;
+  position: relative;
+}
+
+.process-mini-visual::before,
+.process-mini-visual::after {
+  content: '';
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(101, 244, 255, 0.18);
+}
+
+.process-mini-visual::before {
+  width: 10px;
+  height: 10px;
+  top: 18px;
+  right: 20px;
+  box-shadow: 0 0 14px rgba(101, 244, 255, 0.5);
+}
+
+.process-mini-visual::after {
+  width: 40px;
+  height: 1px;
+  top: 22px;
+  right: 36px;
 }
 
 .process-mini-visual span {
@@ -1174,6 +1284,18 @@ h1 span {
   to { transform: scale(1.18); opacity: 1; }
 }
 
+@keyframes processGlowIn {
+  0% {
+    box-shadow: 0 0 0 rgba(0, 213, 255, 0);
+  }
+  35% {
+    box-shadow: 0 0 34px rgba(0, 213, 255, 0.18), 0 18px 46px rgba(0, 0, 0, 0.26), inset 0 0 28px rgba(0, 213, 255, 0.08);
+  }
+  100% {
+    box-shadow: inset 0 0 24px rgba(10, 132, 255, 0.05), 0 10px 34px rgba(0, 0, 0, 0.18);
+  }
+}
+
 @keyframes loadingPulse {
   0%, 100% { transform: scaleX(0.36); opacity: 0.65; }
   50% { transform: scaleX(1); opacity: 1; }
@@ -1205,6 +1327,7 @@ h1 span {
   .hero-section,
   .command-section,
   .process-section,
+  .talent-section,
   .strategy-section,
   .footer {
     grid-template-columns: 1fr;
@@ -1323,6 +1446,7 @@ h1 span {
   .services-section,
   .command-section,
   .process-section,
+  .talent-section,
   .strategy-section,
   .footer {
     padding-left: 18px;
@@ -1346,9 +1470,17 @@ h1 span {
     justify-content: flex-start;
   }
 
+  .process-badge-wrap::after {
+    display: none;
+  }
+
   .process-icon-shell {
     width: 62px;
     height: 62px;
+  }
+
+  .process-mini-visual {
+    min-height: 92px;
   }
 
   .agent-floating {
@@ -2155,5 +2287,182 @@ h1 span {
 
   .core-console {
     bottom: 1%;
+  }
+}
+
+/* NEXUMA v12: Tech Talent & Staffing especializado */
+.talent-section {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: 44px;
+  align-items: center;
+  padding: 86px max(24px, calc((100% - 1180px) / 2));
+  border-top: 1px solid rgba(74, 180, 255, 0.16);
+  background:
+    radial-gradient(circle at 16% 34%, rgba(0, 213, 255, 0.13), transparent 34%),
+    radial-gradient(circle at 88% 18%, rgba(10, 132, 255, 0.12), transparent 34%),
+    linear-gradient(180deg, rgba(2, 5, 13, 0.95), rgba(3, 11, 25, 0.92));
+  overflow: hidden;
+}
+
+.talent-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(101, 244, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(101, 244, 255, 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(circle at 70% 45%, black, transparent 72%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.talent-copy,
+.talent-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.talent-section h2 {
+  font-size: clamp(30px, 4vw, 50px);
+  line-height: 1.05;
+  letter-spacing: -1.4px;
+  margin-bottom: 12px;
+}
+
+.talent-copy p {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.talent-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 24px 0 14px;
+  min-height: 52px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 213, 255, 0.52);
+  background: linear-gradient(135deg, rgba(10, 132, 255, 0.72), rgba(0, 213, 255, 0.16));
+  color: #ffffff;
+  font-weight: 900;
+  box-shadow: 0 0 28px rgba(0, 213, 255, 0.22), inset 0 0 18px rgba(255, 255, 255, 0.05);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.talent-cta:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 38px rgba(0, 213, 255, 0.32), inset 0 0 18px rgba(255, 255, 255, 0.08);
+}
+
+.talent-copy small {
+  display: block;
+  max-width: 520px;
+  color: var(--muted-2);
+  line-height: 1.55;
+}
+
+.talent-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.talent-card {
+  min-height: 216px;
+  padding: 24px;
+  border-radius: 26px;
+  border: 1px solid rgba(74, 180, 255, 0.22);
+  background:
+    linear-gradient(135deg, rgba(10, 132, 255, 0.11), transparent 48%),
+    rgba(3, 11, 25, 0.74);
+  box-shadow: inset 0 0 28px rgba(10, 132, 255, 0.06), 0 16px 50px rgba(0, 0, 0, 0.22);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.talent-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 0%, rgba(101, 244, 255, 0.11) 46%, transparent 68%);
+  transform: translateX(-120%);
+  transition: transform 0.56s ease;
+  pointer-events: none;
+}
+
+.talent-card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(0, 213, 255, 0.56);
+  box-shadow: 0 22px 62px rgba(0, 0, 0, 0.32), 0 0 28px rgba(0, 213, 255, 0.16), inset 0 0 30px rgba(0, 213, 255, 0.08);
+}
+
+.talent-card:hover::before {
+  transform: translateX(120%);
+}
+
+.talent-card span {
+  display: inline-grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 17px;
+  color: #06101f;
+  background: linear-gradient(135deg, #ffffff, #65f4ff, #0a84ff);
+  font-weight: 1000;
+  box-shadow: 0 0 22px rgba(0, 213, 255, 0.32);
+}
+
+.talent-card h3 {
+  margin: 22px 0 10px;
+  font-size: 24px;
+}
+
+.talent-card p {
+  color: var(--muted);
+  line-height: 1.62;
+  margin-bottom: 0;
+}
+
+.talent-card i {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 22px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(10, 132, 255, 0.32), #00d5ff);
+  box-shadow: 0 0 18px rgba(0, 213, 255, 0.32);
+  transform-origin: left;
+  animation: loadingPulse 3.8s ease-in-out infinite;
+}
+
+@media (max-width: 1120px) {
+  .talent-section {
+    grid-template-columns: 1fr;
+  }
+
+  .service-tabs {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .talent-section {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .talent-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .talent-card {
+    min-height: 190px;
   }
 }
