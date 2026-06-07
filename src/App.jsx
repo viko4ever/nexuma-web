@@ -276,16 +276,64 @@ const services = {
 
 const processSteps = {
   es: [
-    ['01', 'Diagnóstico', 'Mapeamos operación, dolores, sistemas actuales y oportunidades de automatización.'],
-    ['02', 'Arquitectura', 'Diseñamos objetos, flujos, integraciones, permisos y componentes técnicos.'],
-    ['03', 'Construcción', 'Desarrollamos por módulos, validamos reglas de negocio y documentamos cambios.'],
-    ['04', 'Salida y evolución', 'Acompañamos pruebas, despliegue, capacitación y mejora continua.']
+    {
+      number: '01',
+      icon: 'diagnosis',
+      title: 'Diagnóstico',
+      text: 'Analizamos la operación actual para detectar fricción, oportunidades y prioridades reales.',
+      bullets: ['Mapeo de procesos', 'Dolores y cuellos de botella', 'Oportunidades de automatización']
+    },
+    {
+      number: '02',
+      icon: 'architecture',
+      title: 'Arquitectura',
+      text: 'Traducimos la necesidad del negocio en una solución clara, escalable y bien conectada.',
+      bullets: ['Objetos, flujos y permisos', 'Integraciones y componentes', 'Definición técnica y funcional']
+    },
+    {
+      number: '03',
+      icon: 'build',
+      title: 'Construcción',
+      text: 'Desarrollamos por módulos, validamos reglas y documentamos para asegurar orden y control.',
+      bullets: ['Desarrollo modular', 'Pruebas y validaciones', 'Documentación de cambios']
+    },
+    {
+      number: '04',
+      icon: 'evolve',
+      title: 'Salida y evolución',
+      text: 'Acompañamos la salida a operación y medimos resultados para seguir mejorando.',
+      bullets: ['Despliegue y capacitación', 'Medición de impacto', 'Mejora continua']
+    }
   ],
   en: [
-    ['01', 'Diagnosis', 'We map operations, pain points, current systems and automation opportunities.'],
-    ['02', 'Architecture', 'We design objects, flows, integrations, permissions and technical components.'],
-    ['03', 'Build', 'We develop by modules, validate business rules and document changes.'],
-    ['04', 'Launch and evolve', 'We support testing, deployment, training and continuous improvement.']
+    {
+      number: '01',
+      icon: 'diagnosis',
+      title: 'Diagnosis',
+      text: 'We assess the current operation to identify friction, opportunities and real priorities.',
+      bullets: ['Process mapping', 'Pain points and bottlenecks', 'Automation opportunities']
+    },
+    {
+      number: '02',
+      icon: 'architecture',
+      title: 'Architecture',
+      text: 'We translate business needs into a clear, scalable and well-connected solution.',
+      bullets: ['Objects, flows and permissions', 'Integrations and components', 'Technical and functional definition']
+    },
+    {
+      number: '03',
+      icon: 'build',
+      title: 'Build',
+      text: 'We develop in modules, validate rules and document changes to ensure control.',
+      bullets: ['Modular development', 'Testing and validations', 'Change documentation']
+    },
+    {
+      number: '04',
+      icon: 'evolve',
+      title: 'Launch and evolve',
+      text: 'We support go-live and measure results to keep improving the operation.',
+      bullets: ['Deployment and training', 'Impact measurement', 'Continuous improvement']
+    }
   ]
 }
 
@@ -389,6 +437,53 @@ function ServiceIcon({ id }) {
       <rect x="45" y="22" width="11" height="25" rx="3" {...common} />
       <path {...common} d="M18 50h17M26.5 41v9M14 23h22M48 41h5" />
       <path {...common} d="M16 29h10M16 35h18" />
+    </svg>
+  )
+}
+
+function ProcessIcon({ type }) {
+  const common = { fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round' }
+
+  if (type === 'diagnosis') {
+    return (
+      <svg viewBox="0 0 64 64" className="process-svg" aria-hidden="true">
+        <circle cx="28" cy="28" r="14" {...common} />
+        <path {...common} d="M38 38l10 10" />
+        <path {...common} d="M28 22v12l8 4" />
+        <circle cx="28" cy="28" r="3" fill="currentColor" stroke="none" />
+      </svg>
+    )
+  }
+
+  if (type === 'architecture') {
+    return (
+      <svg viewBox="0 0 64 64" className="process-svg" aria-hidden="true">
+        <rect x="10" y="12" width="18" height="14" rx="4" {...common} />
+        <rect x="36" y="12" width="18" height="14" rx="4" {...common} />
+        <rect x="23" y="38" width="18" height="14" rx="4" {...common} />
+        <path {...common} d="M19 26v8h13M45 26v8H32M32 34v4" />
+      </svg>
+    )
+  }
+
+  if (type === 'build') {
+    return (
+      <svg viewBox="0 0 64 64" className="process-svg" aria-hidden="true">
+        <path {...common} d="M22 22l-8 10 8 10" />
+        <path {...common} d="M42 22l8 10-8 10" />
+        <path {...common} d="M36 18l-8 28" />
+        <rect x="10" y="10" width="44" height="44" rx="12" {...common} />
+      </svg>
+    )
+  }
+
+  return (
+    <svg viewBox="0 0 64 64" className="process-svg" aria-hidden="true">
+      <path {...common} d="M16 32h12l6-10 8 20 6-10h4" />
+      <circle cx="16" cy="32" r="5" {...common} />
+      <circle cx="34" cy="22" r="5" {...common} />
+      <circle cx="42" cy="42" r="5" {...common} />
+      <circle cx="52" cy="32" r="5" {...common} />
     </svg>
   )
 }
@@ -739,11 +834,37 @@ function App() {
         </div>
 
         <div className="process-timeline">
-          {processSteps[lang].map(([number, title, text]) => (
-            <article key={number}>
-              <strong>{number}</strong>
-              <h3>{title}</h3>
-              <p>{text}</p>
+          {processSteps[lang].map((step) => (
+            <article key={step.number} className="process-card">
+              <div className="process-badge-wrap">
+                <strong>{step.number}</strong>
+              </div>
+
+              <div className="process-card-main">
+                <div className="process-card-header">
+                  <div className="process-icon-shell">
+                    <ProcessIcon type={step.icon} />
+                  </div>
+                  <div>
+                    <h3>{step.title}</h3>
+                    <p>{step.text}</p>
+                  </div>
+                </div>
+
+                <div className="process-card-body">
+                  <ul className="process-bullets">
+                    {step.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+
+                  <div className="process-mini-visual" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+              </div>
             </article>
           ))}
         </div>
