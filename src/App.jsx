@@ -1,7 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import logoBrand from './assets/nexuma-brand-transparent.png'
-import heroWorld from './assets/hero-world.png'
 
 const content = {
   es: {
@@ -395,42 +394,59 @@ function ServiceIcon({ id }) {
 }
 
 function HeroVisual({ lang }) {
-  const labels = lang === 'es'
-    ? ['Salesforce Core', 'AI Agents', 'API Sync', 'Automation']
-    : ['Salesforce Core', 'AI Agents', 'API Sync', 'Automation']
+  const modules = lang === 'es'
+    ? [
+        ['CRM', 'Salesforce Core', 'Clientes, casos y ventas'],
+        ['AI', 'Agentes IA', 'Atención y análisis'],
+        ['API', 'Integraciones', 'Sistemas conectados'],
+        ['AUTO', 'Automatización', 'Flujos y alertas'],
+        ['DATA', 'Data Layer', 'Indicadores operativos'],
+        ['WEB', 'Web & Apps', 'Canales digitales']
+      ]
+    : [
+        ['CRM', 'Salesforce Core', 'Customers, cases and sales'],
+        ['AI', 'AI Agents', 'Service and analysis'],
+        ['API', 'Integrations', 'Connected systems'],
+        ['AUTO', 'Automation', 'Flows and alerts'],
+        ['DATA', 'Data Layer', 'Operational metrics'],
+        ['WEB', 'Web & Apps', 'Digital channels']
+      ]
+
+  const consoleRows = lang === 'es'
+    ? ['Diagnóstico operativo', 'Arquitectura CRM', 'Automatización IA', 'Medición continua']
+    : ['Operational diagnosis', 'CRM architecture', 'AI automation', 'Continuous measurement']
 
   return (
-    <div className="hero-visual" aria-label="NEXUMA technology network animation">
-      <div className="holo-stage">
-        <div className="orbit orbit-one"></div>
-        <div className="orbit orbit-two"></div>
-        <div className="orbit orbit-three"></div>
-        <div className="world-shell">
-          <img src={heroWorld} alt="NEXUMA global connections" className="hero-world" />
-          <div className="world-scan"></div>
-          <div className="world-glass"></div>
+    <div className="hero-visual nexuma-core-visual reveal-scroll" aria-label="NEXUMA operating core animation">
+      <div className="core-stage">
+        <div className="core-grid"></div>
+        <div className="core-scan"></div>
+        <div className="core-ring core-ring-one"></div>
+        <div className="core-ring core-ring-two"></div>
+        <div className="core-ring core-ring-three"></div>
+        <div className="core-flow core-flow-one"></div>
+        <div className="core-flow core-flow-two"></div>
+        <div className="core-flow core-flow-three"></div>
+
+        <div className="core-center">
+          <span>NEXUMA CORE</span>
+          <strong>Digital Ops</strong>
+          <small>CRM + AI + API</small>
+          <div className="core-pulse"><i></i><i></i><i></i></div>
         </div>
 
-        <div className="node node-a"><span></span></div>
-        <div className="node node-b"><span></span></div>
-        <div className="node node-c"><span></span></div>
-        <div className="node node-d"><span></span></div>
+        {modules.map(([code, title, description], index) => (
+          <article className={`core-module core-module-${index + 1}`} style={{ '--delay': `${index * 0.12}s` }} key={title}>
+            <b>{code}</b>
+            <strong>{title}</strong>
+            <span>{description}</span>
+          </article>
+        ))}
 
-        <div className="hud-card hud-card-one">
-          <small>STATUS</small>
-          <strong>ONLINE</strong>
-          <span>Latency 08ms</span>
-        </div>
-
-        <div className="hud-card hud-card-two">
-          <small>NEXUMA OS</small>
-          <strong>Digital Stack</strong>
-          <span>CRM + AI + API</span>
-        </div>
-
-        <div className="data-console">
-          {labels.map((label) => (
-            <div className="console-row" key={label}>
+        <div className="core-console">
+          <small>{lang === 'es' ? 'OPERACIÓN EN SECUENCIA' : 'SEQUENCED OPERATION'}</small>
+          {consoleRows.map((label, index) => (
+            <div className="core-console-row" key={label} style={{ '--row': index }}>
               <span>{label}</span>
               <i></i>
             </div>
@@ -584,6 +600,26 @@ function App() {
   const [lang, setLang] = useState('es')
   const [selectedId, setSelectedId] = useState('salesforce')
 
+  useEffect(() => {
+    const items = document.querySelectorAll('.reveal-scroll')
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.16, rootMargin: '0px 0px -70px 0px' }
+    )
+
+    items.forEach((item) => observer.observe(item))
+
+    return () => observer.disconnect()
+  }, [])
+
   const t = content[lang]
   const currentServices = services[lang]
   const selectedService = currentServices.find((service) => service.id === selectedId) || currentServices[0]
@@ -611,7 +647,7 @@ function App() {
       </header>
 
       <section className="hero-section">
-        <div className="hero-copy">
+        <div className="hero-copy reveal-scroll">
           <p className="eyebrow">{t.heroKicker}</p>
           <h1>
             {t.heroTitle1}
@@ -635,7 +671,7 @@ function App() {
         <HeroVisual lang={lang} />
       </section>
 
-      <section id="services" className="services-section">
+      <section id="services" className="services-section reveal-scroll">
         <p className="section-kicker">{t.servicesKicker}</p>
         <h2>{t.servicesTitle}</h2>
         <div className="section-line"></div>
@@ -654,7 +690,7 @@ function App() {
           ))}
         </div>
 
-        <div className="service-detail">
+        <div className="service-detail reveal-scroll">
           <div className="service-badge">
             <div className="service-orb"><ServiceIcon id={selectedService.id} /></div>
           </div>
@@ -676,7 +712,7 @@ function App() {
         </div>
       </section>
 
-      <section className="command-section">
+      <section className="command-section reveal-scroll">
         <div className="command-copy">
           <p className="section-kicker">{t.commandKicker}</p>
           <h2>{t.commandTitle}</h2>
@@ -695,7 +731,7 @@ function App() {
         </div>
       </section>
 
-      <section id="method" className="process-section">
+      <section id="method" className="process-section reveal-scroll">
         <div className="process-intro">
           <p className="section-kicker">{t.processKicker}</p>
           <h2>{t.processTitle}</h2>
@@ -713,7 +749,7 @@ function App() {
         </div>
       </section>
 
-      <section className="strategy-section">
+      <section className="strategy-section reveal-scroll">
         <div>
           <p className="section-kicker">{t.strategyKicker}</p>
           <h2>{t.strategyTitle}</h2>
@@ -731,7 +767,7 @@ function App() {
         </div>
       </section>
 
-      <footer id="contact" className="footer">
+      <footer id="contact" className="footer reveal-scroll">
         <div>
           <img src={logoBrand} alt="NEXUMA Consulting Group" className="footer-logo" />
         </div>
