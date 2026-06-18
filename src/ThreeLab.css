@@ -246,3 +246,39 @@
     letter-spacing: -2px;
   }
 }
+
+/* FIX: mantiene el canvas transparente y evita el panel blanco */
+.lab-visual canvas {
+  background: transparent !important;
+}
+
+.lab-visual {
+  background:
+    linear-gradient(rgba(101, 244, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(101, 244, 255, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at center, rgba(0, 132, 255, 0.24), transparent 46%),
+    rgba(4, 12, 28, 0.58) !important;
+  background-size: 44px 44px, 44px 44px, 100% 100%, 100% 100% !important;
+}
+
+.lab-visual > div:first-child {
+  background: transparent !important;
+}
+
+/* FIX: mantiene el canvas transparente y evita el panel blanco */
+.lab-visual canvas {
+  background: transparent !important;
+}
+
+.lab-visual {
+  background:
+    linear-gradient(rgba(101, 244, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(101, 244, 255, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at center, rgba(0, 132, 255, 0.24), transparent 46%),
+    rgba(4, 12, 28, 0.58) !important;
+  background-size: 44px 44px, 44px 44px, 100% 100%, 100% 100% !important;
+}
+
+.lab-visual > div:first-child {
+  background: transparent !important;
+  }
