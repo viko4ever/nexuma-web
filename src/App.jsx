@@ -1,12 +1,7 @@
-import React from 'react';
-import Hero from './components/Hero';
+import ThreeLabV4 from './components/ThreeLabV4'
 
 function App() {
-  return (
-    <div className="bg-black min-h-screen text-white">
-      <Hero />
-    </div>
-  );
+  return <ThreeLabV4 />
 }
 
-export default App;
+export default App
