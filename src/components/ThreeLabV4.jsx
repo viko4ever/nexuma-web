@@ -377,11 +377,11 @@ function CoreCanvas({ progress = 0, variant = 'hero' }) {
 function Nav() {
   return (
     <header className="v4-nav">
-      <a className="v4-brand" href="#top" aria-label="Nexuma Operating System">
+      <a className="v4-brand" href="#top" aria-label="Nexuma Consulting Group">
         <div className="brand-mark">N</div>
         <div>
           <strong>NEXUMA</strong>
-          <span>OPERATING SYSTEM</span>
+          <span>CONSULTING GROUP</span>
         </div>
       </a>
       <nav aria-label="Navegación principal">
@@ -401,8 +401,8 @@ function Hero() {
     <section className="v4-hero" id="top">
       <div className="hero-copy">
         <p className="kicker">SALESFORCE / AI / AUTOMATION / API MESH</p>
-        <h1>NEXUMA Operating System</h1>
-        <p>Construimos la capa operativa digital para empresas que escalan: CRM, IA, automatización, integraciones, experiencia web y talento tecnológico en un solo sistema.</p>
+        <h1>Arquitectura tecnológica para operar, automatizar y escalar.</h1>
+        <p>En Nexuma Consulting Group construimos la capa operativa digital para empresas que escalan: CRM, IA, automatización, integraciones, experiencia web y talento tecnológico en un solo sistema.</p>
         <div className="hero-actions">
           <a href="https://wa.me/525515288533?text=Hola%20Nexuma%2C%20quiero%20solicitar%20un%20diagn%C3%B3stico%20para%20mi%20empresa." target="_blank" rel="noreferrer">Solicitar diagnóstico <span>→</span></a>
           <a className="secondary" href="#system">Explorar el sistema <span>→</span></a>
@@ -662,8 +662,8 @@ function Catalogs() {
     <section className="v4-section catalog-section" id="catalogs">
       <Reveal className="section-heading">
         <span>02B / CATALOGS</span>
-        <h2>Catálogo modular con paquetes desplegables.</h2>
-        <p>Selecciona una capacidad Nexuma y despliega el nivel de ejecución ideal: Starter, Premium o Platinium. Sin precios visibles; cada alcance se calibra después del diagnóstico.</p>
+        <h2>Contamos con paquetes a tu medida.</h2>
+        <p>Selecciona una capacidad Nexuma y conoce el nivel de ejecución ideal para tu empresa: Starter, Premium o Platinium. Sin precios visibles; cada alcance se calibra después del diagnóstico.</p>
       </Reveal>
 
       <div className="catalog-selector-wrap">
@@ -793,7 +793,7 @@ function Footer() {
       </div>
       <div className="footer-bottom">
         <span>© 2026 Nexuma Consulting Group. Todos los derechos reservados.</span>
-        <span>NEXUMA://OPERATING_SYSTEM</span>
+        <span>NEXUMA://CONSULTING_GROUP</span>
       </div>
     </footer>
   )
