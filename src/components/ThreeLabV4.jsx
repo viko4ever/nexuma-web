@@ -377,8 +377,8 @@ function CoreCanvas({ progress = 0, variant = 'hero' }) {
 function Nav() {
   return (
     <header className="v4-nav">
-      <a className="v4-brand" href="#top" aria-label="Nexuma Consulting Group">
-        <div className="brand-mark">N</div>
+      <a className="v4-brand" href="/" aria-label="Volver al selector Nexuma">
+        <span className="brand-mark brand-mark-isotype" aria-hidden="true"><img src="/assets/nexuma/nexuma-isotype-transparent.png" alt="" /></span>
         <div>
           <strong>NEXUMA</strong>
           <span>CONSULTING GROUP</span>
@@ -747,8 +747,8 @@ function Footer() {
     <footer className="site-footer">
       <div className="footer-grid">
         <div className="footer-brand">
-          <a className="footer-brand-link" href="#top">
-            <span className="brand-mark">N</span>
+          <a className="footer-brand-link" href="/">
+            <span className="brand-mark brand-mark-isotype" aria-hidden="true"><img src="/assets/nexuma/nexuma-isotype-transparent.png" alt="" /></span>
             <div>
               <strong>NEXUMA</strong>
               <span>CONSULTING GROUP</span>
@@ -764,7 +764,7 @@ function Footer() {
 
         <div className="footer-column">
           <h4>Enlaces</h4>
-          <a href="#top">Inicio</a>
+          <a href="/">Inicio</a>
           <a href="#system">Sistema</a>
           <a href="#modules">Módulos</a>
           <a href="#catalogs">Catálogos</a>
@@ -866,6 +866,7 @@ export default function ThreeLabV4() {
     <main className="nexuma-v4">
       <ScreenField />
       <Nav />
+      <a className="v4-back-selector" href="/">← Volver a elegir solución</a>
       <Hero />
       <SystemStory />
       <Modules />
